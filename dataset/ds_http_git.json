@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "/awesomedata/awesome-public-datasets/raw/refs/heads/master/Datasets/titanic.csv.zip"
+				"relativeUrl": "titanic.csv.zip"
 			},
 			"columnDelimiter": ",",
 			"compressionCodec": "ZipDeflate",

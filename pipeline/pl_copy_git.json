@@ -57,7 +57,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedText1",
+						"referenceName": "ds_delim_aztrainsav01",
 						"type": "DatasetReference"
 					}
 				]
