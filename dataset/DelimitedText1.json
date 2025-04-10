@@ -1,19 +1,19 @@
 {
-	"name": "ds_http_git",
+	"name": "DelimitedText1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_http_git",
+			"referenceName": "ls_adls_aztrainv01",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "HttpServerLocation",
-				"relativeUrl": "/awesomedata/awesome-public-datasets/raw/refs/heads/master/Datasets/titanic.csv.zip"
+				"type": "AzureBlobFSLocation",
+				"folderPath": "landing-data/git",
+				"fileSystem": "dbs-uc-data01"
 			},
 			"columnDelimiter": ",",
-			"compressionCodec": null,
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
