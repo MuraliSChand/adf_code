@@ -13,7 +13,8 @@
 				"relativeUrl": "/awesomedata/awesome-public-datasets/raw/refs/heads/master/Datasets/titanic.csv.zip"
 			},
 			"columnDelimiter": ",",
-			"compressionCodec": null,
+			"compressionCodec": "ZipDeflate",
+			"compressionLevel": "Fastest",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""

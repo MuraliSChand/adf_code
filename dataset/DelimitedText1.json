@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "titanic.csv",
 				"folderPath": "landing-data/git",
 				"fileSystem": "dbs-uc-data01"
 			},
