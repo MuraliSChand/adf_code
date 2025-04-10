@@ -1,0 +1,9 @@
+{
+	"name": "az-train-adf01",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "44ef9ab7-4edf-425a-ae7c-6fcfe8ab180d",
+		"tenantId": "b108aaa9-5a9e-4f65-b13c-31c041b0a526"
+	}
+}
