@@ -5,7 +5,20 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set url",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set path",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -52,17 +65,128 @@
 				"inputs": [
 					{
 						"referenceName": "ds_http_git",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"relurl": {
+								"value": "@variables('relurl')",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "ds_delim_aztrainsav01",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"outpath": {
+								"value": "@variables('outpath')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
+			},
+			{
+				"name": "Lookup",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "ds_metadata_git",
+						"type": "DatasetReference",
+						"parameters": {
+							"metafile": {
+								"value": "@pipeline().parameters.metafile",
+								"type": "Expression"
+							}
+						}
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Set url",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Lookup",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "relurl",
+					"value": {
+						"value": "@activity('Lookup').output.value[0].relurl",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set path",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Lookup",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "outpath",
+					"value": {
+						"value": "@activity('Lookup').output.value[0].relurl",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"parameters": {
+			"metafile": {
+				"type": "string",
+				"defaultValue": "copy_git_metadata.json"
+			}
+		},
+		"variables": {
+			"outpath": {
+				"type": "String"
+			},
+			"relurl": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }

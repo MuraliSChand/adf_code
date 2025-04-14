@@ -5,12 +5,20 @@
 			"referenceName": "ls_http_git",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"relurl": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "titanic.csv.zip"
+				"relativeUrl": {
+					"value": "@dataset().relurl",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"compressionCodec": "ZipDeflate",

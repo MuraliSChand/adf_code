@@ -1,32 +1,28 @@
 {
-	"name": "ds_delim_aztrainsav01",
+	"name": "ds_metadata_git",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_aztrainv01",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"outpath": {
-				"type": "string",
-				"defaultValue": "landing-data/git"
+			"metafile": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
-		"type": "DelimitedText",
+		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": {
-					"value": "@dataset().outpath",
+				"fileName": {
+					"value": "@dataset().metafile",
 					"type": "Expression"
 				},
+				"folderPath": "metadata/json",
 				"fileSystem": "dbs-uc-data01"
-			},
-			"columnDelimiter": ",",
-			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			}
 		},
-		"schema": []
+		"schema": {}
 	}
 }
