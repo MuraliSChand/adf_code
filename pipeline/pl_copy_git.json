@@ -13,7 +13,7 @@
 						]
 					},
 					{
-						"activity": "Set path",
+						"activity": "Set path`",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -149,7 +149,7 @@
 				}
 			},
 			{
-				"name": "Set path",
+				"name": "Set path`",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
