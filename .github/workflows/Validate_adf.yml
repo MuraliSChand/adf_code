@@ -2,7 +2,7 @@ name: ValidateADF
 on:
  push:
   branches:
-   - develop
+   #- develop
 jobs:
   validateADF:
     runs-on: ubuntu-latest
