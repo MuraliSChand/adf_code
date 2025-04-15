@@ -2,7 +2,6 @@ on:
   push:
     branches:
     - develop
-    - feature/feature01
 
 permissions:
       id-token: write
