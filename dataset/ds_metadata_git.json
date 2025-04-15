@@ -1,0 +1,28 @@
+{
+	"name": "ds_metadata_git",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_aztrainv01",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"metafile": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().metafile",
+					"type": "Expression"
+				},
+				"folderPath": "metadata/json",
+				"fileSystem": "dbs-uc-data01"
+			}
+		},
+		"schema": {}
+	}
+}

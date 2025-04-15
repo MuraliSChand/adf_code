@@ -1,0 +1,32 @@
+{
+	"name": "ds_delim_aztrainsav01",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_aztrainv01",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"outpath": {
+				"type": "string",
+				"defaultValue": "landing-data/git"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().outpath",
+					"type": "Expression"
+				},
+				"fileSystem": "dbs-uc-data01"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
