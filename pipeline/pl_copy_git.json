@@ -13,7 +13,7 @@
 						]
 					},
 					{
-						"activity": "Set path`",
+						"activity": "Set path",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -88,7 +88,7 @@
 				]
 			},
 			{
-				"name": "LookupDetails",
+				"name": "Lookup",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -129,7 +129,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "LookupDetails",
+						"activity": "Lookup",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -149,11 +149,11 @@
 				}
 			},
 			{
-				"name": "Set path`",
+				"name": "Set path",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "LookupDetails",
+						"activity": "Lookup",
 						"dependencyConditions": [
 							"Succeeded"
 						]
